@@ -1,0 +1,22 @@
+{% extends "newsite_main_page.html" %}
+{% block main %}
+<div class="authentication_form">
+{% block auth %}
+	<form action="/authentication/" method="post">
+    	{% csrf_token %}
+    	<div>
+    		<label>User name</label>
+    		{{form.your_name}}
+    		{{form.your_name.errors}}
+    	</div>
+    	<div>
+    		<label>Password</label>
+    		{{form.password}}
+    		{{form.password.errors}}
+    	</div>
+    	<input type="submit" value="Log in" class="authentication_button btn btn-primary" />
+    	<input type="button" value="Back" class="authentication_button btn btn-primary" id="get_back" />
+	</form>
+{% endblock %}
+</div>
+{% endblock %}

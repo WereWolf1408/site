@@ -1,0 +1,13 @@
+p1 = Publication(title="Title1", content="Content1", image_source="img1.jpg")
+p2 = Publication(title="Title2", content="Content2", image_source="img2.jpg")
+p3 = Publication(title="Title3", content="Content3", image_source="img3.jpg")
+p4 = Publication(title="Title4", content="Content4", image_source="img4.jpg")
+p5 = Publication(title="Title5", content="Content5", image_source="img5.jpg")
+p6 = Publication(title="Title6", content="Content6", image_source="img6.jpg")
+
+p1.save()
+p2.save()
+p3.save()
+p4.save()
+p5.save()
+p6.save()

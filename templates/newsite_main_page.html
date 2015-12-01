@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Медиа-запросы</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    {% load staticfiles %}
+    <script src="{% static 'script/jquery.js' %}"></script>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'newsite_main_page.css' %}">
+</head>
+<body>
+{% block main %}
+<div class="left_side">
+    <div class="logo_text">
+        <div class="logo_img">
+            <a href=""><img src="{% static 'img/logo.jpg' %}"></a>
+        </div>
+    </div>
+    <div class="logo_text">
+        <span class="enot">Little Princess :)</span>
+    </div>
+    <div class="left_menu">
+        <ul id="left_menu_action">
+            <a href="/authentication/">
+                <li>Authentication</li>
+            </a>
+            <a href="/registration/">
+                <li>Registration</li>
+            </a>
+            <a href="">
+                <li>Menu3</li>
+            </a>
+            <a href="">
+                <li>Menu4</li>
+            </a>
+            <a href="">
+                <li>Menu5</li>
+            </a>
+        </ul>
+    </div>
+</div>
+
+<a href="" class="hide_button">/////</a>
+<div class="right_side">
+    {% if request.user.is_authenticated %}
+    <!-- user panel -->
+    <div class="user_panel">
+        <div class="user_img">
+            <img src="">
+        </div>
+        <div class="user_info">
+            <p class="user_info_username">Username: {{request.user.username}}</p>
+            <p class="user_info_other">other info:</p>
+            <a href="/log_out/" class="user_info_logout">Logout</a>
+        </div>
+    </div>
+    <!-- end user panel -->
+    <!-- search panel -->
+    <div class="search_panel">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+        </span>
+        </div>
+        <button type="button" class="btn btn-primary">Show</button>
+        <div class="show_panel">
+            <div class="tools">
+                <div class="up_selector">
+                    <select class="one_selector">
+                        <option>Пункт 1</option>
+                        <option>Пункт 2</option>
+                    </select>
+                    <select class="two_selector">
+                        <option>Пункт 1</option>
+                        <option>Пункт 2</option>
+                    </select> 
+                </div>
+                <button type="button" class="btn btn-default tools_button">Default</button>
+            </div>
+        </div>
+    </div>
+    <!-- end search panel -->
+    {% endif %}
+    <div class="main_content">
+        {% include "content.html" %}
+    </div>
+    <div class="pagination_panel">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% for num in numeration %}
+            <li><a href="#">{{num}}</a></li>
+            {% endfor %}
+            <li>
+                <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="pager">
+            <li><a href="#">Prev</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+{% endblock %}
+</body>
+<script type="text/javascript" src="{% static 'script/newsite_main_page.js' %}"></script>
+</html>

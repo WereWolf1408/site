@@ -1,0 +1,245 @@
+@import url(newsite_media.css);
+body {
+	font-size: 15pt;
+	line-height: 1.3;
+}
+.left_side{
+	background: #1d282b;
+    width: 330px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: white;
+    position: fixed;
+    z-index: 5;
+}
+.logo_text{
+	color: white;
+	text-align: center;
+}
+.logo_img{
+	margin-top: 80px;
+	display: inline-block;
+	width: 60%;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 50%;
+	/*margin: 0 auto;*/
+}
+.logo_img img{
+	height: 100%;
+	width: 100%;
+}
+.left_side span{
+	display: block;
+	text-align: center;
+}
+.left_menu{
+	text-align: center;
+}
+.left_menu ul{
+	list-style: none;
+	margin-top: 20px;
+}
+.left_menu a{
+	margin-left: -40px;
+	display: block;
+	color: white;
+	padding: 3px;
+	text-decoration: none;
+	font-size: 1em;
+}
+.left_menu a:hover{
+	background-color: #343e41;
+}
+/*end left side*/
+.hide_button{
+	border: 2px solid black;
+	position: fixed;
+	height: 100%;
+	color: white;
+	font-size: 30px;
+	top: 0;
+	left: 0;
+	width: 50px;
+	background: #1d282b;
+	text-decoration: none;
+	z-index: 6;
+}
+/*------------------------------------------------------------*/
+/*start right side*/
+.right_side{
+    background: #ffffff;
+    word-break: break-all;
+    /*max-width: 1500px;*/
+    margin-right: 20px;
+    margin-top: 20px;
+}
+/*--------------------------------------------------------------*/
+/* start user panel*/
+.user_panel{
+	position: relative;
+	border: 2px dashed black;
+	height: 100px;
+	/*width: 50%;*/
+}
+.user_img{
+	height: 100%;
+	width: 25%;
+	min-width: 100px;
+	max-width: 100px;
+	overflow: hidden;
+	border-radius: 50%;
+	/*display: inline-block;*/
+	border: 1px solid black;
+}
+.user_img img{
+	height: 100%;
+	width: 100%;
+}
+.user_info{
+	display: inline-block;
+	height: 100%;
+	/*width: 70%;*/
+	vertical-align: top;
+	position: relative;
+}
+.user_info p{
+	font-size: 13pt;
+}
+.user_info_logout{
+	/*position: absolute;
+	right: 0;*/
+	font-size: 13pt;
+}
+/*end user panel*/
+/*-----------------------------------------------------------------*/
+/*search panel*/
+.search_panel{
+	position: relative;
+	margin-top: 20px;
+	/*height: 40px;*/
+}
+.show_panel{
+	overflow: hidden;
+	background-color: gray;
+	position: relative;
+	z-index: 10;
+	width: 50%;
+}
+.one_selector{
+	color: red;
+	margin-left: 30px;
+}
+.two_selector{
+	color: blue;
+	float: right;
+	margin-right: 30px;
+}
+.up_selector{
+	border: 2px solid white;
+	display: block;
+	margin-top: 50px;
+}
+.tools_button{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 20px;
+	width: 100px;
+}
+.tools{
+	display: none;
+}
+/*end serach panel*/
+/*-------------------------------------------------------------*/
+/*start content*/
+.main_img{
+	overflow: hidden;
+	/*margin: 0 auto;*/
+	border: 2px solid black;
+}
+.main_img img{
+	height: 100%;
+	width: 100%;
+}
+.text{
+	margin-right: 20px;
+	margin-left: 10px;
+}
+.post_footer{
+	/*margin-right: 7%;*/
+	margin-top: 20px;
+	border-bottom: 2px dashed black;
+	/*height: 30px;*/
+	display: block;
+	position: relative;
+}
+.footer_button{
+	/*display: inline-block;*/
+	height: 30px;
+	/*width: 130px;*/
+	text-align: center;
+	position: absolute;
+	right: 0;
+	text-decoration: none;
+	background: #DCDCDC;
+}
+.date{
+	display: inline-block;
+	margin-left: 5px;
+}
+.footer_button:hover{
+	background-color: #343e41;
+	color: white;
+}
+/*end content*/
+/*---------------------------------------------------------*/
+/*start pagination*/
+.pagination_panel{
+	text-align: center;
+}
+.pager a:nth-child(1){
+	width: 47%;
+}
+/*bootstrap*/
+.input-group{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+/*end bootstrap*/
+/*---------------------------------------------------*/
+/*authentication form*/
+.authentication_form{
+	height: 400px;
+	max-width: 800px;
+	min-width: 240px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: #eee;
+	border-radius: 20px;
+}
+.authentication_form label{
+	margin-top: 15px;
+	display: block;
+}
+.auth_reg_input{
+	height: 35px;
+}
+#error_pass, #error_conf_pass{
+	display: none;
+	font-size: 0.7em;
+	color: red;
+	margin-top: 0;
+}
+.errorlist{
+	color: red;
+	list-style: none;
+	font-size: 0.7em;
+}
+/*---------------------------------------------------*/

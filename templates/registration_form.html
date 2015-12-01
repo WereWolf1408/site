@@ -1,0 +1,29 @@
+{% extends 'authentication_form.html' %}
+{% block auth %}
+    <form action="/registration/" method="post">
+    	{% csrf_token %}
+    	<div>
+    		<label>User name</label>
+    		{{form.your_name}}
+    		{{form.your_name.errors}}
+    	</div>
+    	<div>
+    		<label>Password</label>
+    		{{form.password}}
+    		{{form.password.errors}}
+    		<label id="error_pass">field is not equal</label>
+    	</div>
+    	<div>
+    		<label>Confirm password</label>
+    		{{form.confirm_pass}}
+    		{{form.confirm_pass.errors}}
+    		<label id="error_conf_pass">field is not equal</label>
+    	</div>
+    	<div>
+    		<label>Email</label>
+    		{{form.emain}}
+    		{{form.emain.errors}}
+    	</div>
+    <input type="submit" value="Log in" class="authentication_button btn btn-primary" id="login" />
+    <input type="button" value="Back" class="authentication_button btn btn-primary" id="get_back" />
+{% endblock %}

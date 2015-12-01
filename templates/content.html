@@ -1,0 +1,15 @@
+{% for obj in publications %}
+<h2>{{obj.title}}</h2>
+<p class="text">Text</p>
+<div class="main_img">
+    {% load staticfiles %}
+    <img src="{% static 'img/'%}{{obj.image_source}}">
+</div>
+<div class="post_footer">
+<!-- проблема слишком длинная дата -->
+    <div class="date">
+        <strong>Date:</strong> <em>{{obj.date}}</em>
+    </div>
+    <a href="" class="footer_button">More</a>
+</div>
+{% endfor %}
