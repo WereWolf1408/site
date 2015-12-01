@@ -14,8 +14,9 @@ class Publications(object):
         return cls.initialization
 
     def __init__(self):
+        self.records_count = 3
         self.publication = Publication.objects.all()
-        self.paginator = Paginator(self.publication, 2)
+        self.paginator = Paginator(self.publication, self.records_count)
 
     def get_page(self, page):
         try:
@@ -28,16 +29,21 @@ class Publications(object):
             publications = self.paginator.page(self.paginator.num_pages)
         return publications
 
-    def create_numeration(self):
-        mas = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    def pagination(self):
+        mas = []
+        i = 1
+        while(i <= (self.paginator.count/self.records_count)):
+            mas.append(i)
+            i += 1
         return mas
+
 
 def main_page(request):
     args = {}
     publications = Publications().publication[:2]
     args['publications'] = publications
     args['request'] = request
-    args['numeration'] = Publications().create_numeration()
+    args['numeration'] = Publications().pagination()
     return render_to_response('newsite_main_page.html', args)
 
 
@@ -45,5 +51,5 @@ def get_page(request, page):
     args = {}
     args['publications'] = Publications().get_page(page)
     args['request'] = request
-    args['numeration'] = Publications().create_numeration()
+    args['numeration'] = Publications().pagination()
     return render_to_response('newsite_main_page.html', args)
