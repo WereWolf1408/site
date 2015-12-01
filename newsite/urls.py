@@ -29,5 +29,6 @@ urlpatterns = [
                                                    'reg_log_func': auth.log_in}),
     url(r'^registration/$', auth.auth_reg_form, {'model': RegistrationForm, 'template': 'registration_form.html',
                                                  'reg_log_func': auth.registration}),
-    url(r'^log_out/$', auth.log_out)
+    url(r'^log_out/$', auth.log_out),
+    url(r'^ajaxexample/$', pub.ajaxexample),
 ]

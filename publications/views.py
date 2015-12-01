@@ -53,3 +53,7 @@ def get_page(request, page):
     args['request'] = request
     args['numeration'] = Publications().pagination()
     return render_to_response('newsite_main_page.html', args)
+
+
+def ajaxexample(request):
+    return HttpResponse('this is ajax example')
