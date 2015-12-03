@@ -14,7 +14,7 @@
 <div class="left_side">
     <div class="logo_text">
         <div class="logo_img">
-            <a href=""><img src="{% static 'img/logo.jpg' %}"></a>
+            <a href="/site/"><img src="{% static 'img/logo.jpg' %}"></a>
         </div>
     </div>
     <div class="logo_text">
@@ -88,23 +88,32 @@
     </div>
     <div class="pagination_panel">
         <ul class="pagination">
+            {% if publications.has_previous %}
             <li>
-                <a href="#" aria-label="Previous">
+                <a href="/site/page/{{ publications.previous_page_number  }}/" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            {% for num in numeration %}
-            <li><a href="#">{{num}}</a></li>
+             {% endif %}
+            {% for page in publications.paginator.page_range %}
+            <li><a href="#">{{page}}</a></li>
             {% endfor %}
+            {% if publications.has_next %}
             <li>
                 <a href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
+            {% endif %}
         </ul>
         <ul class="pager">
-            <li><a href="#">Prev</a></li>
-            <li><a href="#">Next</a></li>
+            {% if publications.has_previous %}
+            <li><a href="/site/page/{{ publications.previous_page_number  }}/">Prev</a></li>
+            {% endif %}
+           
+            {% if publications.has_next %}
+            <li><a href="/site/page/{{ publications.next_page_number }}/">Next</a></li>
+            {% endif %}
         </ul>
     </div>
 </div>

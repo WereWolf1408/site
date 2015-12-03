@@ -42,6 +42,9 @@
 	.auth_reg_input{
 		width: 100%;
 	}
+	.date{
+		font-size: 10pt;
+	}
 	/*---------------------------------------------*/
 	/*pagination*/
 	.pager{

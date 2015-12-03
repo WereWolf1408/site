@@ -1,14 +1,7 @@
-class Animal:
-    initial = None
-
-    def __new__(cls, *args, **kwargs):
-        if cls.initial is None:
-            cls.initial = super(Animal, cls).__new__(cls)
-        return cls.initial
-
-    def __init__(self):
-        self.cat = "barsik"
 
 
-animal = Animal()
-print(Animal().cat)
+i = 0
+while(i < 10):
+    print('next element', i)
+    import pudb; pudb.set_trace()
+    i += 1
