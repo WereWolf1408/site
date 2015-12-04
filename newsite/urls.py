@@ -24,11 +24,12 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^site/page/([0-9])/$', pub.get_page),
     url(r'^site/page/([0-9]{2})/$', pub.get_page),
-    url(r'^site/$', pub.main_page),
+    url(r'^site/$', pub.get_page, {'page': 1}),
     url(r'^authentication/$', auth.auth_reg_form, {'model': AuthenticationForm, 'template': 'authentication_form.html',
                                                    'reg_log_func': auth.log_in}),
     url(r'^registration/$', auth.auth_reg_form, {'model': RegistrationForm, 'template': 'registration_form.html',
                                                  'reg_log_func': auth.registration}),
     url(r'^log_out/$', auth.log_out),
+    url(r'&search$', pub.search),
     url(r'^ajaxexample/$', pub.ajaxexample),
 ]

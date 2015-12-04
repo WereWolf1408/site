@@ -44,13 +44,13 @@ $('#login').on('click', function(event){
 		return false;
 	} 
 })
-$('.btn-primary').on('click', function(){
-	 if ($('.btn-primary').html() == 'Hide'){
+$('.hp_button').on('click', function(){
+	 if ($('.hp_button').html() == 'Hide'){
 	 	$('.show_panel').animate({'height': 0}, 500);
 	 	$('.tools').css({'display': 'none'});
-	 	$('.btn-primary').html('Show')
+	 	$('.hp_button').html('Show')
 	 }else{
-	 	$('.btn-primary').html('Hide');
+	 	$('.hp_button').html('Hide');
 	 	$('.show_panel').animate({'height': 400}, 1000);
 		$('.tools').css({'display': 'block'});
 	 }
@@ -83,5 +83,15 @@ $('#enot').on('click', function(event){
         }
     }
 	})
+	return false;
+})
+$('.hide_button').on('click', function(event){
+	if($('.hide_button').html() == "+"){
+		$('.left_side').css({'display': 'block'});	
+		$('.hide_button').html("-")
+	} else{
+		$('.left_side').css({'display': 'none'});
+		$('.hide_button').html("+")
+	}
 	return false;
 })

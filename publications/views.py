@@ -30,18 +30,23 @@ class Publications(object):
         return publications
 
 
-def main_page(request):
-    args = {}
-    publications = Publications().paginator.page(1)
-    args['publications'] = publications
-    args['request'] = request
-    return render_to_response('newsite_main_page.html', args)
 
 
 def get_page(request, page):
     args = {}
     args['publications'] = Publications().get_page(page)
     args['request'] = request
+    return render_to_response('newsite_main_page.html', args)
+
+
+def search(reqeust, page):
+    if page is None:
+        page = 1
+    args = {}
+    publication = Publication.objects.all()
+    paginator = Paginator(publication, 3)
+    args['publications'] = paginator.page(page)
+    args['request'] = reqeust
     return render_to_response('newsite_main_page.html', args)
 
 

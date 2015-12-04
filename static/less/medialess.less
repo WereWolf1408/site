@@ -1,0 +1,157 @@
+.hide_func(@one, @two){
+	@media(max-width: 800px){
+		display: @one;
+	}
+	@media(min-width: 800px){
+		display: @two;
+	}
+}
+.one_style(@property1, @value1, @property2, @value2){
+	@media(max-width: 800px){
+		@{property1}: @value1;
+	}
+	@media(min-width: 800px){
+		@{property2}: @value2;
+	}
+}
+
+.left_side{
+	.hide_func(none, block);
+}
+.logo_img{
+	@media(max-width: 800px){
+		margin-top: 20px;
+		height: 80px;
+		max-width: 85px;
+	}
+	@media(min-width: 800px){
+		margin-top: 80px;
+		height: 200px;
+	}
+}
+.left_menu{
+	.one_style(font-size, 9pt, font-size, 20px);
+}
+.hide_button{
+	.hide_func(block, none);
+}
+.right_side{
+	.one_style(margin-left, 40px, margin-left, 340px);
+}
+.user_panel{
+	.one_style(min-width, 160px, width, 450px);
+}
+.user_img{
+	.one_style(display, none, display, inline-block);
+}
+.user_info{
+	.one_style(width, 100%, width, 70%);
+}
+.user_info_logout{
+	@media(max-width: 800px){}
+	@media(min-width: 800px){
+		position: absolute;
+		right: 0;
+	}
+}
+.search_panel{
+	.one_style(height, 75px, height, 40px);
+}
+/*строка поиска*/
+.input-group{
+	.one_style(width, 100%, width, 40%);
+}
+.show_panel{
+	.one_style(width, 100%, width, 50%);
+}
+.hp_button{
+	.one_style(width, 100%, width, 200px);
+}
+.main_img{
+	@media(max-width: 800px){
+		width: 100%;
+	}
+	@media(min-width: 800px){
+		width: 60%;
+		margin: 0 auto;
+	}
+}
+.post_footer{
+	@media(max-width: 800px){
+		height: 60px;
+	}
+	@media(min-width: 800px){}
+}
+.more_button{
+	@media(max-width: 800px){
+		width: 100%;
+		display: block;
+	}
+	@media(min-width: 800px){
+		width: 180px;
+		display: inline-block;
+	}
+}
+.date{
+	.one_style(font-size, 9pt, font-size, 15pt);
+}
+.pager{
+	@media(max-width: 800px){
+		display: block;
+		font-size: 15px;
+	}
+	@media(min-width: 800px){
+		display: none;
+	}
+}
+.pagination{
+	@media(max-width: 800px){
+		display: none;
+		padding: 0;
+	}
+	@media(min-width: 800px){
+		display: inline-block;
+		padding: 20px;
+		font-size: 25px;
+	}
+}
+.authentication_form{
+	label{
+		@media(max-width: 800px){}
+		@media(min-width: 800px){
+			margin-left: 5%;
+		}
+	}
+}
+.authentication_button{
+	@media(max-width: 800px){
+		width: 100%;
+		margin-top: 10px;
+	}
+	@media(min-width: 800px){
+		float: right;
+		margin: 20px;
+		width: 180px;
+	}
+}
+.auth_reg_input{
+	@media(max-width: 800px){
+		width: 100%;
+		height: 20pt;
+	}
+	@media(min-width: 800px){
+		width: 90%;
+		margin-left: 5%;
+		height: 30pt;
+	}
+}
+.authentication_form{
+	@media(max-width: 800px){
+		width: 90%;
+		height: 100%;
+	}
+	@media(min-width: 800px){
+		max-width: 800px;
+		max-height: 400px;
+	}
+}
