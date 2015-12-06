@@ -21,7 +21,6 @@ def auth_reg_form(request, model, template, reg_log_func):
         form = model()
     return render(request, template, {'form': form})
 
-
 def log_in(request, form):
     username = form.cleaned_data['your_name']
     password = form.cleaned_data['password']

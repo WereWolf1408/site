@@ -1,3 +1,4 @@
+var search = false;
 // -------------------------------------------------
 function getCookie(name) {
     var cookieValue = null;
@@ -60,7 +61,11 @@ $('.pagination').on('click', function(event){
 	if (event.target.tagName == 'A'){
 		page = event.target.text
 		if (page != '<<' && page != '>>'){
-			window.location.href = '/site/page/' + page + '/';
+			if (search == false) {
+				window.location.href = '/site/page/' + page + '/';	
+			} else if (search == true){
+				window.location.href = '/search/page/' + page + '/';
+			}
 		}
 	}
 	return false;
@@ -94,4 +99,15 @@ $('.hide_button').on('click', function(event){
 		$('.hide_button').html("+")
 	}
 	return false;
+})
+$('#logo_img').on('click', function(event){
+	if (search == true){
+		search = false;
+	}
+})
+$('#search_button').on('click', function(event){
+	var text = $('#search_text').val();
+	if (text != ""){
+		window.location.href = '/site/search?text=' + text;
+	}
 })

@@ -15,7 +15,7 @@
 <div class="left_side">
     <div class="logo_text">
         <div class="logo_img">
-            <a href="/site/"><img src="{% static 'img/logo.jpg' %}"></a>
+            <a href="/site/" id="logo_img"><img src="{% static 'img/logo.jpg' %}"></a>
         </div>
     </div>
     <div class="logo_text">
@@ -61,9 +61,9 @@
     <!-- search panel -->
     <div class="search_panel">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input id="search_text" type="text" class="form-control" placeholder="Search for...">
         <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Go!</button>
+            <button class="btn btn-default" type="button" id="search_button">Go!</button>
         </span>
         </div>
         <button type="button" class="btn btn-primary hp_button">Show</button>

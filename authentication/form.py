@@ -14,3 +14,6 @@ class RegistrationForm(AuthenticationForm):
      emain = forms.EmailField(max_length=50)
      emain.widget = forms.TextInput(attrs={'class': 'auth_reg_input'})
 
+
+
+
