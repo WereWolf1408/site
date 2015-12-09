@@ -111,3 +111,10 @@ $('#search_button').on('click', function(event){
 		window.location.href = '/site/search?text=' + text;
 	}
 })
+
+$('.main_content').on('click', function(event){
+	elem = event.target;
+	if (elem.text != 'More'){
+		return false;
+	}
+})

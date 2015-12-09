@@ -76,6 +76,7 @@
     word-break: break-all;
     margin-right: 20px;
     margin-top: 20px;
+	@border();
 }
 /*end right side*/
 /*----------------------------------------------*/
@@ -168,6 +169,13 @@
 	margin-right: 20px;
 	margin-left: 10px;
 }
+.short-text{
+	.text;
+	max-height: 70px;
+	overflow: hidden;
+	padding: 10px;
+	text-overflow: ellipsis;
+}
 .post_footer{
 	margin-top: 20px;
 	border-bottom: 2px dashed black;
@@ -227,3 +235,65 @@
 }
 /*end authentication form*/
 /*----------------------------------------*/
+//start comment place
+@coment-form-color: #F5DEB3;
+.comment_place{
+	margin-top: 20px;
+}
+.comment_form{
+border: 2px dashed black;
+	margin: 2% 2% 0 2%;
+	width: 96%;
+	display: inline-block;
+}
+.user_comment{
+	height: 120px;
+	width: 100px;
+	float: left;
+	p{
+		text-align: center;
+		font-weight: bold;
+	}
+}
+.user_comment_icon{
+	height: 80%;
+	img{
+		height: 100%;
+		width: 100%;
+		border: 2px solid @coment-form-color;
+		border-radius: 50%;
+	}
+}
+.user_comment_nik{
+	height: 20%;
+}
+.comment_info{
+	margin: 5px 5px 0px 105px;
+}
+.comment_text{
+	&:extend(.comment_info);
+	margin-bottom: 5px;
+	height: 80px;
+	background: @coment-form-color;
+	border-radius: 10px;
+	p{
+		font-style: italic;
+	}
+}
+.textarea{
+	margin-top: 10px;
+	margin-left: 2%;
+	height: 250px;
+	textarea{
+		height: 85%;
+		width: 35%;
+		display: block;
+	}
+	input{
+		height: 15%;
+		display: block;
+		width: 35%;
+	}
+}
+//end comment place
+//--------------------------------------------

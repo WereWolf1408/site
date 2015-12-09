@@ -86,7 +86,9 @@
     <!-- end search panel -->
     {% endif %}
     <div class="main_content">
+		{% block content %}
         {% include "content.html" %}
+		{% endblock %}
     </div>
     <div class="pagination_panel">
         <ul class="pagination">

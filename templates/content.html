@@ -1,6 +1,6 @@
 {% for obj in publications %}
 <h2>{{obj.title}}</h2>
-<p class="text">Text</p>
+<p class="short-text">{{obj.content}}</p>
 <div class="main_img">
     {% load staticfiles %}
     <img src="{% static 'img/'%}{{obj.image_source}}">
@@ -10,6 +10,6 @@
     <div class="date">
         <strong>Date:</strong> <em>{{obj.date}}</em>
     </div>
-    <a href="" class=" btn btn-primary more_button">More</a>
+    <a href="/site/more/id={{obj.id}}/" class=" btn btn-primary more_button">More</a>
 </div>
 {% endfor %}
