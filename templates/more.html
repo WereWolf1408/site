@@ -1,7 +1,7 @@
 {% extends 'newsite_main_page.html' %}
 
 {% block  content %}
-<h2>{{publication.title}}</h2>
+<h2>{{publication.title}}<p id="publication_id">{{publication.id}}</p></h2>
 <div class="date">
 	<strong>Date:</strong> <em>{{publication.date}}</em>
 </div>
@@ -13,29 +13,24 @@
 <div class="post_footer">
 </div>
 <div class="comment_place">
-	<div class="comment_form">
-		<div class="user_comment">
-			<div class="user_comment_icon">
-				{% load staticfiles %}
-    			<img src="{% static 'img/logo.jpg'%}">
-			</div>
-			<div class="user_comment_nik">
-				<p>NikName</p>
-			</div>
-		</div>
-		<div class="comment_info">
-			Info
-		</div>
-		<div class="comment_text">
-			<p>
-				text
-			</p>
-		</div>
+
+	{% include "comment_body.html" %}
+
+</div>
+{% if request.user.is_authenticated %}
+<form action="" method="post" id="comment_form">
+	{% csrf_token %}
+	<div class="textarea">
+		<textarea id=textarea>
+		</textarea>
 	</div>
-</div>
-<div class="textarea">
-	<textarea>
-	</textarea>
-	<input type="button" value="Send" class="btn btn-primary"/>
-</div>
+	<input type="button" value="Send" class="btn btn-primary" id="send_comment"/>
+	<div class="wait_save_comment">
+		<div></div>
+		<label>Waiting...</label>
+		<img src="{% static 'img/save-comment.gif'%}">
+	</div>
+</form>
+{% endif %}
+
 {% endblock %}

@@ -23,3 +23,7 @@ p9.save()
 p10.save()
 p11.save()
 p12.save()
+
+from django.contrib.auth.models import User
+user = User.objects.create_user('Anton', 'anton@thebeatles.com', 'enot1992')
+user.save()

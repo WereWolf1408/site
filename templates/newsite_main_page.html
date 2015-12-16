@@ -33,7 +33,7 @@
                 <li>Ajax example</li>
             </a>
             <a href="">
-                <li>Menu4</li>
+                <li>Forum</li>
             </a>
             <a href="">
                 <li>Menu5</li>
@@ -43,6 +43,7 @@
 </div>
 
 <a href="" class="hide_button">+</a>
+
 
 <div class="right_side">
     {% if request.user.is_authenticated %}
@@ -85,11 +86,11 @@
     </div>
     <!-- end search panel -->
     {% endif %}
+	{% block content %}
     <div class="main_content">
-		{% block content %}
         {% include "content.html" %}
-		{% endblock %}
     </div>
+	{% endblock %}
     <div class="pagination_panel">
         <ul class="pagination">
             {% if publications.has_previous %}
@@ -99,10 +100,14 @@
                 </a>
             </li>
              {% endif %}
+
+			
             {% for page in publications.paginator.page_range %}
-            <li><a href="#">{{page}}</a></li>
+				<li><a href="#">{{page}}</a></li>
             {% endfor %}
-            {% if publications.has_next %}
+            
+			
+			{% if publications.has_next %}
             <li>
                 <a href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
@@ -122,6 +127,8 @@
     </div>
 </div>
 </div>
+{% endblock %}
+{% block footer%}
 {% endblock %}
 </body>
 <script type="text/javascript" src="{% static 'script/newsite_main_page.js' %}"></script>

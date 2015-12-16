@@ -1,7 +1,4 @@
-
-
-i = 0
-while(i < 10):
-    print('next element', i)
-    import pudb; pudb.set_trace()
-    i += 1
+import re
+comp = re.compile('\w')
+str = comp.findall('enot')
+print(str)

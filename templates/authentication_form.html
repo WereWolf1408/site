@@ -1,4 +1,6 @@
 {% extends "newsite_main_page.html" %}
+{% block header %}
+{% endblock %}
 {% block main %}
 <div class="authentication_form">
 {% block auth %}
@@ -8,6 +10,7 @@
     		<label>User name</label>
     		{{form.your_name}}
     		{{form.your_name.errors}}
+			{{form.username}}
     	</div>
     	<div>
     		<label>Password</label>
@@ -19,4 +22,7 @@
 	</form>
 {% endblock %}
 </div>
+
+{% endblock %}
+{% block footer %}
 {% endblock %}

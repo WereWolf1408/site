@@ -5,6 +5,9 @@ from publications.models import Publication
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.template import RequestContext
 from django.db.models import Q
+from django.core.exceptions import ObjectDoesNotExist
+from comment.models import Comment
+from django.views.defaults import page_not_found
 
 
 class Publications(object):
@@ -32,15 +35,27 @@ class Publications(object):
         return publications
 
 
+def handler404(request):
+    response = render_to_response('404.html', {}, context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
+
+
 def get_page(request, page):
     args = {}
     args['publications'] = Publications().get_page(page)
-    return render_to_response('newsite_main_page.html', args, context_instance=RequestContext(request))
+    return render(request, 'newsite_main_page.html', args)
 
 
-def more(request, id):
-    publication = Publications().publication.get(id=id)
-    return render_to_response('more.html', {'publication': publication}, context_instance=RequestContext(request))
+def more(request, id=1):
+    try:
+        args = {}
+        publication = Publications().publication.get(pk=id)
+        args['publication'] = publication
+        args['comments'] = Comment.objects.filter(publication=id)[:5]
+        return render_to_response('more.html', args, context_instance=RequestContext(request))
+    except ObjectDoesNotExist:
+        return HttpResponse('error')
 
 
 def search(reqeust):
@@ -53,4 +68,7 @@ def search(reqeust):
 
 
 def ajaxexample(request):
-    return HttpResponse('this is ajax example')
+    if 'page' in request.GET:
+        page = request.GET.get('page')
+        return HttpResponse(page)
+    return HttpResponse('(')

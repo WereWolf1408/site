@@ -1,0 +1,19 @@
+{% for ob in comments %}
+<div class="comment_form">
+    <div class="user_comment">
+        <div class="user_comment_icon">
+            {% load staticfiles %}
+            <img src="{% static 'img/logo.jpg'%}">
+        </div>
+        <div class="user_comment_nik">
+            <p>{{ob.user}}</p>
+        </div>
+    </div>
+    <div class="comment_info">
+        {{ob.date}}
+    </div>
+    <div class="comment_text">
+        <p>{{ob.text}}</p>
+    </div>
+</div>
+{% endfor %}

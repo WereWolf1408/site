@@ -1,10 +1,13 @@
 @import (css) "medialess.css";
 @user_panel_fs: 13pt;
 @border:{border: 2px solid black;};
+@background: #1d282b;
+@button-color: #337ab7;
 @pic_resolution: {
 	height: 100%;
 	width: 100%;
 };
+//-----------------------------------------------------
 /*left side*/
 .left_side{
 	background: #1d282b;
@@ -76,7 +79,6 @@
     word-break: break-all;
     margin-right: 20px;
     margin-top: 20px;
-	@border();
 }
 /*end right side*/
 /*----------------------------------------------*/
@@ -273,7 +275,7 @@ border: 2px dashed black;
 .comment_text{
 	&:extend(.comment_info);
 	margin-bottom: 5px;
-	height: 80px;
+	min-height: 80px;
 	background: @coment-form-color;
 	border-radius: 10px;
 	p{
@@ -284,16 +286,51 @@ border: 2px dashed black;
 	margin-top: 10px;
 	margin-left: 2%;
 	height: 250px;
+	position: relative;
 	textarea{
-		height: 85%;
+		height: 100%;
 		width: 35%;
 		display: block;
 	}
-	input{
-		height: 15%;
-		display: block;
-		width: 35%;
+}
+#send_comment{
+	height: 15%;
+	display: block;
+	width: 34%;
+	margin-left: 2%;
+	
+}
+.wait_save_comment{
+	opacity: 0;
+	height: 150px;
+	width: 250px;
+	background: @background;
+	position: fixed;
+	right: 10px;
+	bottom: 0;
+	margin: auto;
+	text-align: center;
+	border-radius: 10px 10px 0px 0px;
+	label{
+		color: white;
+		@border();
+		height: 20px;
+		width: 100%;
+		margin-top: 35px;
 	}
+	img{
+		@border();
+	}
+	div{
+		@border();
+		height: 30px;
+		border-radius: 10px 10px 0px 0px;
+		background: @button-color;
+		
+	}
+}
+#publication_id{
+	display: none;
 }
 //end comment place
 //--------------------------------------------

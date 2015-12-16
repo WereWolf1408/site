@@ -31,7 +31,10 @@ urlpatterns = [
                                                  'reg_log_func': auth.registration}),
     url(r'^log_out/$', auth.log_out),
     url(r'^site/search', pub.search),
-    url(r'^site/more/id=([0-9]){1}/$', pub.more),
-    url(r'^site/more/id=([0-9]){2}/$', pub.more),
+    url(r'^site/more/(?P<id>\d+)/$', pub.more),
     url(r'^ajaxexample/$', pub.ajaxexample),
+    url(r'^site/comment/', include('comment.urls')),
+    url(r'^site/upload/$', include('uploadfile.urls')),
+    url(r'^site/form/$', auth.form),
 ]
+
