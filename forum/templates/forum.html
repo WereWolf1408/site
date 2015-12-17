@@ -1,0 +1,32 @@
+{% extends 'newsite_main_page.html' %}
+
+{% block  content %}
+<div class="theme_list">
+	<h2>Title</h2>
+	{% block forumbutton %}
+	<input type="button" class="btn btn-primary bt_new_them" value="New thema">
+	{% endblock %}
+	
+	{% block form %}
+	<div class="newthema">
+		<div>
+			<form method="post" action="/blablabla/">
+			{{form.them_name}}
+			<input type="submit" class="btn btn-primary add_new_them" value="add">
+			</form>
+		</div>
+	</div>
+	{% endblock %}
+	
+	<div class="thema">
+		<div class="thema_info">
+			date create and who created
+		</div>
+		<div class="thema_title">
+			{% block forumlink %}
+			<a href="/site/forum/extend-them/">Thema title</a>
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock %}

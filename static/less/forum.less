@@ -1,0 +1,58 @@
+@border:{border: 2px solid @button-color;};
+@button-color: #337ab7;
+.padding_height(@padding: 5px, @height: 5px){
+	padding-left: @padding;
+	height: @height;
+}
+.zero-padding(){
+	padding: 0;
+	margin: 0;
+}
+
+.theme_list{
+	margin: 60px 10px 0px 10px;
+	h2{
+		.zero-padding();
+	}
+}
+.bt_new_them{
+	margin: 10px;
+	float: right;
+	width: 35%;
+}
+.bt_new_them-ext{
+	&:extend(.bt_new_them);
+}
+.thema{
+	@border();
+	margin-top: 5px;
+	height: 80px;
+	display: inline-block;
+	width: 100%;
+	&_info{
+		border-bottom: 1px solid @button-color;
+		.padding_height(10px, 35%)
+	}
+	&_title{
+		line-height: 40px;
+		.padding_height(10px, 65%)
+	}
+}
+.user_request{
+	@border();
+}
+.newthema{
+	&:extend(.thema);
+	div{
+		widht: 100%;
+		height: 100%;
+	}
+}
+.new_them_title{
+	margin: 20px;
+	width: 50%;
+}
+.add_new_them{
+	float: right;
+	margin: 20px;
+}

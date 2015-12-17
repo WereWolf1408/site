@@ -41,6 +41,7 @@ def form(request):
         form = AuthenticationForm()
     return render(request, '404.html', {'form': form})
 
+
 def log_in(request, form):
     username = form.cleaned_data['your_name']
     password = form.cleaned_data['password']

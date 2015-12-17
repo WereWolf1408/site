@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'example',
     'publications',
     'comment',
+    'forum',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,6 +62,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'publications/templates'),
+            os.path.join(BASE_DIR, 'forum/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

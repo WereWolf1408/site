@@ -36,5 +36,6 @@ urlpatterns = [
     url(r'^site/comment/', include('comment.urls')),
     url(r'^site/upload/$', include('uploadfile.urls')),
     url(r'^site/form/$', auth.form),
+    url(r'^site/forum/', include('forum.urls')),
 ]
 
