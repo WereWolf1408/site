@@ -68,7 +68,8 @@ $('.hp_button').on('click', function(){
 	 }
 	 
 })
-$('.pagination').on('click', function(event){
+
+$('#pagination').on('click', function(event){
 	
 	if (event.target.tagName == 'A'){
 		var pagination_step = 6;
@@ -90,13 +91,6 @@ $('.pagination').on('click', function(event){
 	}
 	return false;
 })
-
-//function scroll_pagination_next(begin, end, step){
-//	for (var i = 4; i < 10; i++){
-//		var current_val = $('.pagination li:nth-child(' + i + ')').text();
-//		$('.pagination li:nth-child(' + i + ')').find('a').text('sdsdsd');
-//	}
-//}
 
 $('#enot').on('click', function(event){
 	$.ajax({

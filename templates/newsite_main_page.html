@@ -60,6 +60,7 @@
     </div>
     <!-- end user panel -->
     <!-- search panel -->
+	{% block  search_panel%}
     <div class="search_panel">
         <div class="input-group">
             <input id="search_text" type="text" class="form-control" placeholder="Search for...">
@@ -84,6 +85,7 @@
             </div>
         </div>
     </div>
+	{% endblock %}
     <!-- end search panel -->
     {% endif %}
 	{% block content %}
@@ -91,8 +93,9 @@
         {% include "content.html" %}
     </div>
 	{% endblock %}
+	{% block pagination %}
     <div class="pagination_panel">
-        <ul class="pagination">
+        <ul class="pagination" id="pagination">
             {% if publications.has_previous %}
             <li>
                 <a href="/site/page/{{ publications.previous_page_number  }}/" aria-label="Previous">
@@ -101,12 +104,17 @@
             </li>
              {% endif %}
 
-			
+<!-------------------------------------------------------------------------------->
+<!--
             {% for page in publications.paginator.page_range %}
 				<li><a href="#">{{page}}</a></li>
             {% endfor %}
+-->
+			{% for page in pagination %}
+				<li><a href="#">{{page}}</a></li>
+            {% endfor %}
             
-			
+<!-------------------------------------------------------------------------------->
 			{% if publications.has_next %}
             <li>
                 <a href="#" aria-label="Next">
@@ -125,12 +133,19 @@
             {% endif %}
         </ul>
     </div>
+	{% endblock %}
 </div>
 </div>
 {% endblock %}
 {% block footer%}
 {% endblock %}
+	<div class="wait_save_comment">
+		<div></div>
+		<label>Waiting...</label>
+		<img src="{% static 'img/save-comment.gif'%}">
+	</div>
 </body>
 <script type="text/javascript" src="{% static 'script/newsite_main_page.js' %}"></script>
+<script type="text/javascript" src="{% static 'script/forum.js' %}"></script>
 <script src="{% static 'script/less.js' %}" type="text/javascript"></script>
 </html>

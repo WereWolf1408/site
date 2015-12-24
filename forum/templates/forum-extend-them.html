@@ -1,19 +1,15 @@
 {% extends 'forum.html' %}
 
-{% block forumbutton %}
-	<input type="button" class="btn btn-primary bt_new_them-ext" value="New extend-thema">
+{% block title %}
+<h2><a href="/site/forum/">{{them.them_name}}</a><div class="hide">{{them.id}}</div></h2>
 {% endblock %}
 {% block forumlink %}
-	<a href="/site/forum/extend-them/">Thema extend-title</a>
+<a href="">Thema extend-title</a>
 {% endblock %}
 
 {% block form %}
-	<div class="newthema">
-		<div>
-			<form method="post" action="/blablabla/">
-			{{form.ext_them_name}}
-			<input type="submit" class="btn btn-primary add_new_them" value="add">
-			</form>
-		</div>
-	</div>
+<form method="post" action="">
+    {{form.them_name}}
+    <input type="button" class="btn btn-primary bt_new_them_add_ext" value="add">
+</form>
 {% endblock %}

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Comment(models.Model):
     text = models.CharField(max_length=1000)
     date = models.DateTimeField(default=datetime.now, blank=True)
-    user = models.ForeignKey(User, related_name='User', default="Anton")
+    user = models.ForeignKey(User, blank=True)
     publication = models.ForeignKey(Publication, on_delete=models.CASCADE, null=True)
 
     class Meta:

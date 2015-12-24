@@ -1,0 +1,15 @@
+{% for ob in forum_list %}
+<div class="them">
+	<div class="them_info">
+        <p>Date: {{ob.date}} User: {{ob.user}} id: {{ob.id}}</p>
+    </div>
+    <div class="them_title">
+        {% block forumlink %}
+        <a href="/site/forum/{{ob.id}}/" id="ext_them">{{ob.them_name}}</a>
+		{% if ob.user.email == request.user.email %}
+		<input type="button" class="btn btn-primary delete_them" value="Del">
+        {% endif %}
+		{% endblock %}
+    </div>
+</div>
+{% endfor %}

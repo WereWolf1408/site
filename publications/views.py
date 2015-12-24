@@ -7,6 +7,8 @@ from django.template import RequestContext
 from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from comment.models import Comment
+from pagination.pagination_class import MyPagination
+from comment.views import get_comments
 from django.views.defaults import page_not_found
 
 
@@ -19,7 +21,7 @@ class Publications(object):
         return cls.initialization
 
     def __init__(self):
-        self.records_count = 3
+        self.records_count = 4
         self.publication = Publication.objects.all()
         self.paginator = Paginator(self.publication, self.records_count)
 
@@ -34,19 +36,24 @@ class Publications(object):
             publications = self.paginator.page(self.paginator.num_pages)
         return publications
 
+    def get_pagination(self, page):
+        pagination = MyPagination(page=int(page), max_page=int(self.paginator.num_pages)).paginations()
+        return pagination
+
 
 def get_page(request, page):
     args = {}
     args['publications'] = Publications().get_page(page)
+    args['pagination'] = Publications().get_pagination(page)
     return render(request, 'newsite_main_page.html', args)
 
 
-def more(request, id=1):
+def more(request, pub_id=1):
     try:
         args = {}
-        publication = Publications().publication.get(pk=id)
+        publication = Publications().publication.get(pk=pub_id)
         args['publication'] = publication
-        args['comments'] = Comment.objects.filter(publication=id)[:5]
+        args.update(get_comments(request, pub_id))
         return render_to_response('more.html', args, context_instance=RequestContext(request))
     except ObjectDoesNotExist:
         return HttpResponse('error')
@@ -61,8 +68,13 @@ def search(reqeust):
     return render_to_response('newsite_main_page.html', args, context_instance=RequestContext(reqeust))
 
 
+# ---------------------------------------------------------------------------------------------------
+
+
 def ajaxexample(request):
     if 'page' in request.GET:
         page = request.GET.get('page')
         return HttpResponse(page)
     return HttpResponse('(')
+
+

@@ -1,32 +1,36 @@
 {% extends 'newsite_main_page.html' %}
+{% block  search_panel%}
+{% endblock %}
 
 {% block  content %}
-<div class="theme_list">
+<div class="them_list">
+	{% block title %}
 	<h2>Title</h2>
-	{% block forumbutton %}
-	<input type="button" class="btn btn-primary bt_new_them" value="New thema">
 	{% endblock %}
-	
-	{% block form %}
-	<div class="newthema">
+	<input type="button" class="btn btn-primary bt_new_them" value="New them">
+<!--	--------------------------------------------------------->
+	<div class="new_them">
 		<div>
-			<form method="post" action="/blablabla/">
+			{% block form %}
+			<form method="post" action="">
 			{{form.them_name}}
-			<input type="submit" class="btn btn-primary add_new_them" value="add">
+			<input type="button" class="btn btn-primary bt_new_them_add" value="add">
 			</form>
-		</div>
-	</div>
-	{% endblock %}
-	
-	<div class="thema">
-		<div class="thema_info">
-			date create and who created
-		</div>
-		<div class="thema_title">
-			{% block forumlink %}
-			<a href="/site/forum/extend-them/">Thema title</a>
 			{% endblock %}
 		</div>
 	</div>
+<!--	-------------------------------------------------------------------->
+	<div id="forum_content">
+		{% include "forum_content.html" %}
+	</div>
 </div>
 {% endblock %}
+	{% block pagination %}
+    <div class="pagination_panel">
+        <ul class="pagination" id="">
+			{% for page in pagination %}
+				<li><a href="/site/forum/page/{{page}}/">{{page}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+	{% endblock %}

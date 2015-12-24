@@ -25,12 +25,9 @@
 		</textarea>
 	</div>
 	<input type="button" value="Send" class="btn btn-primary" id="send_comment"/>
-	<div class="wait_save_comment">
-		<div></div>
-		<label>Waiting...</label>
-		<img src="{% static 'img/save-comment.gif'%}">
-	</div>
 </form>
 {% endif %}
+{% block pagination %}
+{% endblock %}
 
 {% endblock %}
