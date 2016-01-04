@@ -1,0 +1,25 @@
+{% extends 'forum.html' %}
+
+{% block title %}
+<h2><a href=#>{{forum.them_name}}/{{ext_forum.them_name}}</a></h2>
+{% endblock %}
+
+
+{% block forum_content %}
+<div class="f_message">
+	<div class="f_image">
+		{% load staticfiles %}
+        <img src="{% static 'img/logo.jpg'%}">
+		<label>Nikname</label>
+	</div>
+	<div class="f_info">
+	</div>
+	<div class="f_text">
+		<p></p>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block button %}
+{% endblock %}

@@ -1,15 +1,15 @@
 {% for ob in forum_list %}
 <div class="them">
 	<div class="them_info">
-        <p>Date: {{ob.date}} User: {{ob.user}} id: {{ob.id}}</p>
+        <p>Date: {{ob.date}} User: {{ob.user}}</p>
     </div>
     <div class="them_title">
-        {% block forumlink %}
-        <a href="/site/forum/{{ob.id}}/" id="ext_them">{{ob.them_name}}</a>
-		{% if ob.user.email == request.user.email %}
-		<input type="button" class="btn btn-primary delete_them" value="Del">
-        {% endif %}
+		{% block url %}
+    		<a href="/site/forum/id/{{ob.id}}/" id="ext_them">{{ob.them_name}}</a>
 		{% endblock %}
+		{% if ob.user.email == request.user.email %}
+			<input type="button" class="btn btn-primary delete_them" value="Del">
+        {% endif %}
     </div>
 </div>
 {% endfor %}

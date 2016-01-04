@@ -4,33 +4,47 @@
 
 {% block  content %}
 <div class="them_list">
-	{% block title %}
-	<h2>Title</h2>
+    {% block title %}
+    <h2>Title</h2>
+    {% endblock %}
+	
+	
+	{% block button %}
+		{% if request.user.is_authenticated %}
+			<input type="button" class="btn btn-primary bt_new_them" value="New them">
+		{% endif %}
 	{% endblock %}
-	<input type="button" class="btn btn-primary bt_new_them" value="New them">
-<!--	--------------------------------------------------------->
+
+	<!--	--------------------------------------------------------->
 	<div class="new_them">
-		<div>
-			{% block form %}
-			<form method="post" action="">
-			{{form.them_name}}
-			<input type="button" class="btn btn-primary bt_new_them_add" value="add">
-			</form>
-			{% endblock %}
-		</div>
-	</div>
-<!--	-------------------------------------------------------------------->
+        <div>
+            {% block form %}
+            <form method="post" action="">
+                {{form.them_name}}
+                <input type="button" class="btn btn-primary bt_new_them_add" value="add">
+            </form>
+            {% endblock %}
+        </div>
+    </div>
+	<!--	-------------------------------------------------------------------->
+    
+	
+	{% block forum_content %}
 	<div id="forum_content">
-		{% include "forum_content.html" %}
-	</div>
-</div>
-{% endblock %}
-	{% block pagination %}
-    <div class="pagination_panel">
-        <ul class="pagination" id="">
-			{% for page in pagination %}
-				<li><a href="/site/forum/page/{{page}}/">{{page}}</a></li>
-            {% endfor %}
-        </ul>
+       	{% include "forum_content.html" %}
     </div>
 	{% endblock %}
+	
+</div>
+{% endblock %}
+
+
+{% block pagination %}
+<div class="pagination_panel">
+    <ul class="pagination" id="">
+        {% for page in pagination %}
+        <li><a href="/site/forum/page/{{page}}/">{{page}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

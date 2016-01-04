@@ -10,7 +10,8 @@ from comment.models import Comment
 from pagination.pagination_class import MyPagination
 from comment.views import get_comments
 from django.views.defaults import page_not_found
-
+from django.core.cache import cache
+from django.views.decorators.cache import cache_page
 
 class Publications(object):
     initialization = None
@@ -69,6 +70,12 @@ def search(reqeust):
 
 
 # ---------------------------------------------------------------------------------------------------
+
+
+@cache_page(60 * 15)
+def my_cache(request):
+    value = Publications().get_page(1)
+    return HttpResponse(value)
 
 
 def ajaxexample(request):

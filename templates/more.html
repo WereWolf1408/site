@@ -2,21 +2,30 @@
 
 {% block  content %}
 <h2>{{publication.title}}<p id="publication_id">{{publication.id}}</p></h2>
+
 <div class="date">
 	<strong>Date:</strong> <em>{{publication.date}}</em>
 </div>
+
+
 <p class="text">{{publication.content}}</p>
+
+
 <div class="main_img">
     {% load staticfiles %}
     <img src="{% static 'img/'%}{{publication.image_source}}">
 </div>
+
+
 <div class="post_footer">
 </div>
+
+
 <div class="comment_place">
-
 	{% include "comment_body.html" %}
-
 </div>
+
+
 {% if request.user.is_authenticated %}
 <form action="" method="post" id="comment_form">
 	{% csrf_token %}
@@ -26,6 +35,8 @@
 	</div>
 	<input type="button" value="Send" class="btn btn-primary" id="send_comment"/>
 </form>
+
+
 {% endif %}
 {% block pagination %}
 {% endblock %}

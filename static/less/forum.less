@@ -71,3 +71,39 @@
 	float: right;
 	margin: 9px;
 }
+//-----------------------------------------------------------
+//message window
+@color: #F5DEB3;
+
+.f_message{
+	@border();
+	margin-top: 10px;
+	width: 100%;
+	display: inline-block;
+}
+.f_image{
+	@border();
+	width: 130px;
+	height: 150px;
+	float: left;
+	text-align: center;
+	img{
+		border-radius: 50%;
+		height: 80%;
+		width: 100%;
+	}
+	label{
+		line-height: 30px;
+	}
+}
+.f_info{
+	@border();
+	height: 40px;
+	margin: 5px 5px 0px 135px;
+	border-radius: 15px;
+}
+.f_text{
+	&:extend(.f_info);
+	min-height: 90px;
+	background: @color;
+}

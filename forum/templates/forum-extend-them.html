@@ -1,15 +1,33 @@
 {% extends 'forum.html' %}
 
 {% block title %}
-<h2><a href="/site/forum/">{{them.them_name}}</a><div class="hide">{{them.id}}</div></h2>
-{% endblock %}
-{% block forumlink %}
-<a href="">Thema extend-title</a>
+	<h2><a href="/site/forum/">{{forum.them_name}}</a><div class="hide">{{forum.id}}</div></h2>
 {% endblock %}
 
+
+{% block forum_content %}
+<div id="forum_content">
+	{% include "forum_content_ext.html" %}
+</div>
+{% endblock %}
+
+
 {% block form %}
-<form method="post" action="">
-    {{form.them_name}}
-    <input type="button" class="btn btn-primary bt_new_them_add_ext" value="add">
-</form>
+	{% if request.user.is_authenticated %}
+	<form method="post" action="">
+    	{{form.them_name}}
+    	<input type="button" class="btn btn-primary bt_new_them_add_ext" value="add">
+	</form>
+	{% endif %}
+{% endblock %}
+
+
+{% block pagination %}
+<div class="pagination_panel">
+    <ul class="pagination" id="">
+        {% for page in pagination %}
+        <li><a href="/site/forum/page/{{page}}/">{{page}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

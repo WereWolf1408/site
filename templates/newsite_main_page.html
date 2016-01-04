@@ -13,34 +13,31 @@
 <body>
 {% block main %}
 <div class="left_side">
+
+
     <div class="logo_text">
         <div class="logo_img">
             <a href="/site/" id="logo_img"><img src="{% static 'img/logo.jpg' %}"></a>
         </div>
     </div>
+
+
     <div class="logo_text">
         <span class="enot">Little Princess :)</span>
     </div>
+
+
     <div class="left_menu">
         <ul id="left_menu_action">
-            <a href="/authentication/">
-                <li>Authentication</li>
-            </a>
-            <a href="/registration/">
-                <li>Registration</li>
-            </a>
-            <a href="" id="enot">
-                <li>Ajax example</li>
-            </a>
-            <a href="/site/forum/">
-                <li>Forum</li>
-            </a>
-            <a href="">
-                <li>Menu5</li>
-            </a>
+            <a href="/authentication/"><li>Authentication</li></a>
+            <a href="/registration/"><li>Registration</li></a>
+            <a href="" id="enot"><li>Ajax example</li></a>
+            <a href="/site/forum/"><li>Forum</li></a>
+            <a href=""><li>Menu5</li></a>
         </ul>
     </div>
 </div>
+
 
 <a href="" class="hide_button">+</a>
 
@@ -50,7 +47,7 @@
     <!-- user panel -->
     <div class="user_panel">
         <div class="user_img">
-            <img src="">
+            <img src="{% static 'img/logo.jpg'%}">
         </div>
         <div class="user_info">
             <p class="user_info_username">Username: {{request.user.username}}</p>
@@ -60,7 +57,9 @@
     </div>
     <!-- end user panel -->
     <!-- search panel -->
-	{% block  search_panel%}
+
+
+    {% block  search_panel%}
     <div class="search_panel">
         <div class="input-group">
             <input id="search_text" type="text" class="form-control" placeholder="Search for...">
@@ -88,12 +87,16 @@
 	{% endblock %}
     <!-- end search panel -->
     {% endif %}
-	{% block content %}
+
+
+    {% block content %}
     <div class="main_content">
         {% include "content.html" %}
     </div>
 	{% endblock %}
-	{% block pagination %}
+
+
+    {% block pagination %}
     <div class="pagination_panel">
         <ul class="pagination" id="pagination">
             {% if publications.has_previous %}
@@ -103,18 +106,9 @@
                 </a>
             </li>
              {% endif %}
-
-<!-------------------------------------------------------------------------------->
-<!--
-            {% for page in publications.paginator.page_range %}
-				<li><a href="#">{{page}}</a></li>
-            {% endfor %}
--->
 			{% for page in pagination %}
 				<li><a href="#">{{page}}</a></li>
             {% endfor %}
-            
-<!-------------------------------------------------------------------------------->
 			{% if publications.has_next %}
             <li>
                 <a href="#" aria-label="Next">
