@@ -37,7 +37,9 @@ urlpatterns = [
     url(r'^site/upload/$', include('uploadfile.urls')),
     url(r'^site/form/$', auth.form),
     url(r'^site/forum/', include('forum.urls')),
-    # проверка кэширования
     url(r'^site/cache/', pub.my_cache),
+    url(r'^site/bookmarks/add/', pub.bookmark_add),
+    url(r'^site/bookmarks/', pub.bookmarks, {'page': 1}),
+
 ]
 

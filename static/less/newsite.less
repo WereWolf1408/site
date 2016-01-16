@@ -1,5 +1,6 @@
 @import (css) "medialess.css";
 @import (css) "forum.css";
+@import (css) "gallery.css";
 @user_panel_fs: 13pt;
 @border:{border: 2px solid black;};
 @background: #1d282b;
@@ -89,33 +90,36 @@
 /*----------------------------------------------*/
 /*user panel*/
 .user_panel{
-	position: relative;
-	border: 2px dashed black;
+//	some properties in medialess file
+	border: 2px dashed black;	
 	height: 100px;
-}
-.user_img{
-	height: 100%;
-	width: 25%;
-	min-width: 100px;
-	max-width: 100px;
-	overflow: hidden;
-	border-radius: 50%;
-	border: 1px solid black;
-	img{
-		@pic_resolution();
+	.user-img{
+		height: 100%;
+		width: 25%;
+		min-width: 100px;
+		max-width: 100px;
+		overflow: hidden;
+		border-radius: 50%;
+		border: 1px solid black;
+		img{
+			@pic_resolution();
+		}
 	}
-}
-.user_info{
-	display: inline-block;
-	height: 100%;
-	vertical-align: top;
-	position: relative;
-	p{
-		font-size: @user_panel_fs;
+	.user-tools{
+		display: inline-block;
+		height: 100%;
+		vertical-align: top;
+		position: relative;
+		width: 76%;
+		p:nth-child(3){
+			display: inline-block;
+		}
+		#log_out{
+			float: right;
+			position: relative;
+			right: 5px;
+		}
 	}
-}
-.user_info_logout{
-	font-size: @user_panel_fs;
 }
 /*end user panel*/
 /*---------------------------------------------*/
@@ -166,8 +170,9 @@
 .main_img{
 	overflow: hidden;
 	border: 2px solid black;
-	max-height: 400px;
+	max-height: 350px;
 	max-width: 800px;
+	min-height: 350px;
 	img{
 		@pic_resolution();
 	}
@@ -276,6 +281,15 @@
 }
 .comment_info{
 	margin: 5px 5px 0px 105px;
+	div{
+		@border();
+		display: inline-block;
+		width: 25%;
+	}
+	&_date{
+	}
+	&_like{
+	}
 }
 .comment_text{
 	&:extend(.comment_info);
@@ -303,10 +317,11 @@
 	display: block;
 	width: 34%;
 	margin-left: 2%;
+	margin-bottom: 50px;
 	
 }
 .wait_save_comment{
-	opacity: 0;
+	display: none;
 	height: 150px;
 	width: 250px;
 	background: @background;
@@ -331,7 +346,6 @@
 		height: 30px;
 		border-radius: 10px 10px 0px 0px;
 		background: @button-color;
-		
 	}
 }
 #publication_id{
@@ -342,3 +356,56 @@
 .hide{
 	display: none;
 }
+
+.content-header{
+	font-size: 0;
+	height: 80px;
+	h2{
+		width: 75%;
+		display: inline-block;
+	}
+}
+
+//checkboc-----------------------------------------
+.checkboxTwo {
+	width: 120px;
+	height: 40px;
+	background: #333;
+	margin: 20px 0px;
+	float: right;
+
+	border-radius: 50px;
+	position: relative;
+}
+.checkboxTwo:before {
+	content: '';
+	position: absolute;
+	top: 19px;
+	left: 14px;
+	height: 2px;
+	width: 90px;
+	background: #111;
+}
+.checkboxTwo label {
+	display: block;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 9px;
+	z-index: 10;
+	left: 12px;
+	background: #ddd;
+}
+//.checkboxTwo input[type=checkbox]:checked + label {
+//	left: 84px;
+//	background: #26ca28;
+//}
+//end checkbox-------------------------------------

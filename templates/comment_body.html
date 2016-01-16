@@ -10,7 +10,12 @@
         </div>
     </div>
     <div class="comment_info">
-        {{ob.date|date:"D d M Y"}}
+		<div class="comment_info_date">
+			{{ob.date|date:"D d M Y"}}
+		</div>
+		<div class="comment_info_like">
+			like/unlike
+		</div>
     </div>
     <div class="comment_text">
         <p>{{ob.text}}</p>

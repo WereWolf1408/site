@@ -28,6 +28,25 @@ def window_message(request, them=None, id=None):
     return render(request, 'message_window.html', {'forum': forum, 'ext_forum': ext_forum})
 
 
+def delete_forum(request):
+    if 'id' in request.POST:
+        id = request.POST.get('id')
+        Forum.objects.get(pk=id).delete()
+        args = get_forum_list(model=Forum, page=1, args={})
+        return render(request, 'forum_content.html', args)
+    return HttpResponse('something went wrong')
+
+
+def ext_them_delete(request):
+    if 'id' in request.POST:
+        id = request.POST.get('id')
+        ExtendForum.objects.get(pk=id).delete()
+        args = get_forum_list(model=ExtendForum, page=1, args={})
+        return render(request, 'forum_content_ext.html', args)
+    return HttpResponse('something went wrong')
+
+
+
 def save_new_them(request):
     if 'text' in request.POST:
         text = request.POST.get('text')

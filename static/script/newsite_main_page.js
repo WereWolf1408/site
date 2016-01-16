@@ -1,4 +1,7 @@
 var search = false;
+var check_button_color = '#1CC519';
+
+
 // -------------------------------------------------
 function GetURLParameter(sParam){
     var sPageURL = window.location.search.substring(1);
@@ -132,12 +135,42 @@ $('#search_button').on('click', function(event){
 		window.location.href = '/site/search?text=' + text;
 	}
 })
+
+
 $('.main_content').on('click', function(event){
 	elem = event.target;
-	if (elem.text != 'More'){
+	if (elem.tagName == 'LABEL'){
+		if ($(elem).css('left') == '12px'){
+			var id = $(elem).attr('id');
+			$(elem).css({'background': check_button_color, 'left': '86px'});
+			console.log($(elem).attr('id'));
+			add_bookmark(id);
+		} else if ($(elem).css('left') == '86px'){
+			$(elem).css({'background': 'white', 'left': '12px'});
+		}
+	} else if (elem.text != 'More'){
 		return false;
 	}
 })
+
+
+function add_bookmark(id){
+	$.ajax({
+		url: '/site/bookmarks/add/',
+		type: 'POST',
+		data: {'id': id},
+		success: function(data){
+			console.log(data);
+		},
+		beforeSend: function(xhr, settings){
+			if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+            	xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        	}
+		}
+	})
+}
+
+
 $('#send_comment').on('click', function(){
 	var stroka = $.trim($('textarea').val());
 	var pub_id = $('#publication_id').html();
@@ -153,6 +186,7 @@ $('#send_comment').on('click', function(){
 			$('.comment_place').html(data);
 			$('#textarea').val('');
 			$('.wait_save_comment').animate({'opacity': 0}, 1000, function(){
+				$('.wait_save_comment').css({"display": "none"});
 				$('#send_comment').prop('disabled', false);
 			});
 		},
@@ -161,6 +195,7 @@ $('#send_comment').on('click', function(){
             	xhr.setRequestHeader("X-CSRFToken", csrftoken);
         	}
 			$('#send_comment').prop('disabled', true);
+			$('.wait_save_comment').css({"display": "block"});
 			$('.wait_save_comment').animate({'opacity': 1}, 1000);
 		}
 	})

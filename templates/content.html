@@ -1,12 +1,20 @@
 {% for obj in publications %}
-<h2>{{obj.title}}</h2>
+<div class="content-header">
+	<h2 class="content-title">{{obj.title}}</h2>
+	{% if request.user.is_authenticated %}
+		{% if obj.bookmark == False %}
+		<div class="checkboxTwo">
+			<label for="checkboxTwoInput" id='{{obj.id}}'></label>
+  		</div>
+		{% endif %}
+	{% endif %}
+</div>
 <p class="short-text">{{obj.content}}</p>
 <div class="main_img">
     {% load staticfiles %}
     <img src="{% static 'img/'%}{{obj.image_source}}">
 </div>
 <div class="post_footer">
-<!-- проблема слишком длинная дата -->
     <div class="date">
         <strong>Date:</strong> <em>{{obj.date|date:"D d M Y"}}</em>
     </div>

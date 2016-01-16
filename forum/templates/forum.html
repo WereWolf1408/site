@@ -7,16 +7,16 @@
     {% block title %}
     <h2>Title</h2>
     {% endblock %}
-	
-	
-	{% block button %}
-		{% if request.user.is_authenticated %}
-			<input type="button" class="btn btn-primary bt_new_them" value="New them">
-		{% endif %}
-	{% endblock %}
 
-	<!--	--------------------------------------------------------->
-	<div class="new_them">
+
+    {% block button %}
+    {% if request.user.is_authenticated %}
+    <input type="button" class="btn btn-primary bt_new_them" value="New them">
+    {% endif %}
+    {% endblock %}
+
+    <!--	--------------------------------------------------------->
+    <div class="new_them">
         <div>
             {% block form %}
             <form method="post" action="">
@@ -26,15 +26,15 @@
             {% endblock %}
         </div>
     </div>
-	<!--	-------------------------------------------------------------------->
-    
-	
-	{% block forum_content %}
-	<div id="forum_content">
-       	{% include "forum_content.html" %}
+    <!--	-------------------------------------------------------------------->
+
+
+    {% block forum_content %}
+    <div id="forum_content">
+        {% include "forum_content.html" %}
     </div>
-	{% endblock %}
-	
+    {% endblock %}
+
 </div>
 {% endblock %}
 
@@ -48,3 +48,4 @@
     </ul>
 </div>
 {% endblock %}
+

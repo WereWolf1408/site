@@ -43,16 +43,19 @@
 
 
 <div class="right_side">
+	
+	
     {% if request.user.is_authenticated %}
     <!-- user panel -->
     <div class="user_panel">
-        <div class="user_img">
+        <div class="user-img">
             <img src="{% static 'img/logo.jpg'%}">
         </div>
-        <div class="user_info">
-            <p class="user_info_username">Username: {{request.user.username}}</p>
-            <p class="user_info_other">other info:</p>
-            <a href="/log_out/" class="user_info_logout">Logout</a>
+        <div class="user-tools">
+            <p>Username: {{request.user.username}}</p>
+			<p><a href="/site/bookmarks/">Bookmarks: {{bookmark_count}}</a></p>
+			<p><a href="">Message:</a></p>
+            <a href="/log_out/" id="log_out">Logout</a>
         </div>
     </div>
     <!-- end user panel -->
@@ -141,5 +144,6 @@
 </body>
 <script type="text/javascript" src="{% static 'script/newsite_main_page.js' %}"></script>
 <script type="text/javascript" src="{% static 'script/forum.js' %}"></script>
+<script type="text/javascript" src="{% static 'script/gallery.js' %}"></script>
 <script src="{% static 'script/less.js' %}" type="text/javascript"></script>
 </html>

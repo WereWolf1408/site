@@ -13,6 +13,7 @@ from django.views.defaults import page_not_found
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
 
+
 class Publications(object):
     initialization = None
 
@@ -22,30 +23,45 @@ class Publications(object):
         return cls.initialization
 
     def __init__(self):
-        self.records_count = 4
+        self.records_count = 8
         self.publication = Publication.objects.all()
         self.paginator = Paginator(self.publication, self.records_count)
+        self.bookmark = Publication.get_bookmarks.all()
+        self.bookmark_paginator = Paginator(self.bookmark, 20)
 
-    def get_page(self, page):
+    def generate_page(self, page, paginator):
         try:
-            publications = self.paginator.page(page)
+            records = paginator.page(page)
         except PageNotAnInteger:
             # If page is not an integer, deliver first page.
-            publications = self.paginator.page(1)
+            records = paginator.page(1)
         except EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of results.
-            publications = self.paginator.page(self.paginator.num_pages)
+            records = paginator.page(self.paginator.num_pages)
+        return records
+
+    def get_page(self, page):
+        publications = Publications.generate_page(self, page,  self.paginator)
         return publications
 
-    def get_pagination(self, page):
+    def bookmarks(self, page):
+        publications = Publications.generate_page(self, page, self.bookmark_paginator)
+        return publications
+
+    def get_content_pagination(self, page):
         pagination = MyPagination(page=int(page), max_page=int(self.paginator.num_pages)).paginations()
+        return pagination
+
+    def bookmarks_pagination(self, page):
+        pagination = MyPagination(page=int(page), max_page=int(self.bookmark_paginator.num_pages)).paginations()
         return pagination
 
 
 def get_page(request, page):
     args = {}
     args['publications'] = Publications().get_page(page)
-    args['pagination'] = Publications().get_pagination(page)
+    args['pagination'] = Publications().get_content_pagination(page)
+    args['bookmark_count'] = Publication.get_bookmarks.bookmark_count()
     return render(request, 'newsite_main_page.html', args)
 
 
@@ -58,6 +74,23 @@ def more(request, pub_id=1):
         return render_to_response('more.html', args, context_instance=RequestContext(request))
     except ObjectDoesNotExist:
         return HttpResponse('error')
+
+
+def bookmarks(request, page):
+    Publication.get_bookmarks.bookmark_count()
+    args = {}
+    args['publications'] = Publications().bookmarks(page)
+    args['pagination'] = Publications().bookmarks_pagination(page)
+    args['bookmark_count'] = Publication.get_bookmarks.bookmark_count()
+    return render(request, 'bookmarks.html', args)
+
+
+def bookmark_add(request):
+    if 'id' in request.POST:
+        id = request.POST.get('id')
+        Publication.objects.filter(pk=id).update(bookmark='True')
+        return HttpResponse(id)
+    return HttpResponse('something went wrong')
 
 
 def search(reqeust):

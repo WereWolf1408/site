@@ -4,3 +4,11 @@
 	<a href="/site/forum/id/{{forum.id}}/ext-them/id/{{ob.id}}/" 
 	   id="ext_them">{{ob.them_name}}</a>
 {% endblock %}
+
+{% block del_them_button %}
+	{% if ob.user.email == request.user.email %}
+		<input type="button" class="btn btn-primary delete_them_ext" 
+			   id="delele_them_ext" value="Del">
+		<label class="hide" id="forum_id">{{ob.id}}</label>
+	{% endif %}
+{% endblock %}
